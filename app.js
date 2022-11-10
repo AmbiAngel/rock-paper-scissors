@@ -51,3 +51,13 @@ function playGame() {
   let computerChoice = getComputerChoice();
   return calcResults(playerChoice, computerChoice);
 }
+
+function playGameFiveTimes(){
+    let results = []
+    for(i=0; i<5; i++){
+        let round = playGame()
+        alert(round)
+        results.push(round)
+    }
+    return results
+}
