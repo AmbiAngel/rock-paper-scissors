@@ -46,9 +46,11 @@ function calcResults(playerChoice, computerChoice) {
   }
 }
 
-function playGame() {
-  let playerChoice = prompt("Rock, Paper, or Scissors?");
+function playGame(e) {
+  let playerChoice = e.target.textContent
+  console.log(e)
   let computerChoice = getComputerChoice();
+  console.log(calcResults(playerChoice, computerChoice));
   return calcResults(playerChoice, computerChoice);
 }
 
@@ -61,3 +63,10 @@ function playGameFiveTimes(){
     }
     return results
 }
+
+
+let buttons = document.querySelectorAll('.select-buttons')
+
+buttons.forEach(button =>{
+  button.addEventListener('click', playGame)
+})
