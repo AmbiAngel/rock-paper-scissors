@@ -75,16 +75,13 @@ function playGame(e) {
   runningScore.appendChild(newElement)
 
 
-  if(runningScoreArray.length === 5){
+  if(playerScore === 5 || computerScore === 5){
     let endText = document.createElement('h2')
     if(playerScore > computerScore){
       endText.textContent = 'Player Wins Bo5!'
     }
     else if (playerScore < computerScore){
       endText.textContent = 'Computer Wins Bo5!'
-    }
-    else if (playerScore === computerScore){
-      endText.textContent = 'Draw Bo5!'
     }
     else{
       endText.textContent = 'Something went terribly wrong'
