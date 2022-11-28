@@ -1,20 +1,64 @@
-.running-score-container, .select-container, .result-container, .text-running-score{
+* {
+    box-sizing: content-box;
+}
+
+body {
+    background-color: cornflowerblue;
+}
+
+.running-score-container, .select-container, .result-container{
     display: flex;
-    margin: 5% 20%;
+    margin: 3rem;
 
 }
 
-.running-score-container, .select-container{
+.result-container, .running-score-container div {
+    background-color: bisque;
+}
+
+.select-container{
     justify-content: space-between;
+}
+
+.select-buttons {
+    height: 7rem;
+    flex-basis: 20%;
+    gap: 3%;
+    min-width: 8rem;
+    font-size: 2rem;
+    margin: 0 auto;
+    background-color: orange;
+    border: orangered 2px solid;
+}
+
+.select-buttons:hover {
+    background-color: orangered;
+}
+
+.select-buttons:active {
+    background-color: crimson;
 }
 
 .result-container{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border: black 2px solid;
+    width: 32rem;
+    margin: 3rem auto;
 }
 
-.text-running-score{
-    flex-wrap: wrap;
-    justify-content: space-between;
+.running-score-container{
+    justify-content: space-around;
+}
+
+.running-score-container div {
+    width: 10rem;
+    text-align: center;
+    border: black 2px solid;
+}
+
+.end-text {
+    text-align: center;
+    font-size: 4rem;
 }
