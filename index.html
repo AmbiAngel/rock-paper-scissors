@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -14,13 +15,24 @@
         <button class="select-buttons">Paper</button>
         <button class="select-buttons">Scissors</button>
     </div>
-    <div>
+
+    <div class="result-container">
         <h3 style='text-decoration: underline;'>Result</h3>
         <h4 class="result"></h4>
     </div>
-    <div class="running-score">
-        <h3 style='text-decoration: underline;'>Running Score</h3>
+
+    <div class="running-score-container">
+        <div class="player-container">
+            <h3>Player Score</h3>
+            <p class="player-score"></p>
+        </div>
+        <div class="computer-container">
+            <h3>Computer Score</h3>
+            <p class="computer-score"></p>
+        </div>
     </div>
+
+    <div class="end-text"></div>
     <script src="app.js"></script>
 </body>
 

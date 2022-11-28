@@ -1,3 +1,23 @@
+let playerScore = 0;
+let computerScore = 0;
+let runningScoreArray = [];
+let buttons = document.querySelectorAll(".select-buttons");
+let result = document.querySelector(".result");
+let runningPlayerScore = document.querySelector('.player-score');
+let runningComputerScore = document.querySelector('.computer-score')
+let runningScoreContainer = document.querySelector('.running-score-container')
+let textRunningScore = document.querySelector('.text-running-score')
+let endText = document.querySelector('.end-text')
+
+rerenderScore()
+
+
+
+buttons.forEach((button) => {
+  button.addEventListener("click", playGame);
+});
+
+
 function getComputerChoice() {
   //random num 1-3
   let randomNum = Math.floor(Math.random() * 3) + 1;
@@ -53,45 +73,42 @@ function calcResults(playerChoice, computerChoice) {
   }
 }
 
-function resetBoard(){
+function rerenderScore(){
+  runningPlayerScore.textContent = playerScore
+  runningComputerScore.textContent = computerScore
+}
 
-    let oldRunningScore = document.querySelectorAll(".running-score-record");
-    oldRunningScore.forEach((item) => {
-      runningScore.removeChild(item);
-    });
-    runningScore.removeChild(document.querySelector(".end-text"));
+function resetBoard() {
+  endText.textContent = ''
 
-    playerScore = 0;
-    computerScore = 0;
-    runningScoreArray = [];
-    result.textContent = ''
-  
+  playerScore = 0;
+  computerScore = 0;
+  runningScoreArray = [];
+  result.textContent = "";
+  rerenderScore()
 }
 
 function playGame(e) {
-
-  if (document.querySelector(".end-text")) {
-    resetBoard()
-    return
-
+  //after a previous game finished, pressing a button resets the board
+  if (document.querySelector(".end-text").textContent) {
+    resetBoard();
+    return;
   }
 
-
+  //calc result
   let playerChoice = e.target.textContent;
   let computerChoice = getComputerChoice();
   let resultText = calcResults(playerChoice, computerChoice);
+
+  //push result to array and on DOM (result + running score)
   runningScoreArray.push(resultText);
   result.textContent = resultText;
+  rerenderScore()
 
-  // rerenderRunningScore()
 
-  let newElement = document.createElement("p");
-  newElement.classList.add("running-score-record");
-  newElement.textContent = resultText;
-  runningScore.appendChild(newElement);
 
+  //First to 5 Wins
   if (playerScore === 5 || computerScore === 5) {
-    let endText = document.createElement("h2");
     if (playerScore > computerScore) {
       endText.textContent = "Player Wins Bo5!";
     } else if (playerScore < computerScore) {
@@ -99,39 +116,7 @@ function playGame(e) {
     } else {
       endText.textContent = "Something went terribly wrong";
     }
-    endText.classList.add("end-text");
-    runningScore.appendChild(endText);
   }
 }
 
-// function rerenderRunningScore(){
 
-//   runningScoreArray.forEach(item => {
-//        let newItem = document.createElement('p')
-//        newItem.classList.add('running-score-record')
-//        newItem.textContent = item
-//        runningScore.appendChild(newItem)
-//   });
-
-// }
-
-// function playGameFiveTimes(){
-//     let results = []
-//     for(i=0; i<5; i++){
-//         let round = playGame()
-//         alert(round)
-//         results.push(round)
-//     }
-//     return results
-// }
-
-let playerScore = 0;
-let computerScore = 0;
-let runningScoreArray = [];
-let buttons = document.querySelectorAll(".select-buttons");
-let result = document.querySelector(".result");
-let runningScore = document.querySelector(".running-score");
-
-buttons.forEach((button) => {
-  button.addEventListener("click", playGame);
-});
