@@ -1,17 +1,12 @@
 let playerScore = 0;
 let computerScore = 0;
-let runningScoreArray = [];
 let buttons = document.querySelectorAll(".select-buttons");
 let result = document.querySelector(".result");
 let runningPlayerScore = document.querySelector('.player-score');
 let runningComputerScore = document.querySelector('.computer-score')
-let runningScoreContainer = document.querySelector('.running-score-container')
-let textRunningScore = document.querySelector('.text-running-score')
 let endText = document.querySelector('.end-text')
 
 rerenderScore()
-
-
 
 buttons.forEach((button) => {
   button.addEventListener("click", playGame);
@@ -80,11 +75,9 @@ function rerenderScore(){
 
 function resetBoard() {
   endText.textContent = ''
-
   playerScore = 0;
   computerScore = 0;
-  runningScoreArray = [];
-  result.textContent = "";
+  result.textContent = "X";
   rerenderScore()
 }
 
@@ -100,13 +93,10 @@ function playGame(e) {
   let computerChoice = getComputerChoice();
   let resultText = calcResults(playerChoice, computerChoice);
 
-  //push result to array and on DOM (result + running score)
-  runningScoreArray.push(resultText);
+  //render result to DOM (result + running score)
   result.textContent = resultText;
   rerenderScore()
-
-
-
+  
   //First to 5 Wins
   if (playerScore === 5 || computerScore === 5) {
     if (playerScore > computerScore) {
@@ -118,5 +108,3 @@ function playGame(e) {
     }
   }
 }
-
-
